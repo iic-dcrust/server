@@ -4,15 +4,22 @@
 	"description": "server",
 	"main": "bin/www.js",
 	"scripts": {
-		"start": "APP_ENV=dev nodemon ./bin/www.js"
+		"start": "nodemon ./bin/www.js",
+		"production": "nodemon ./bin/www.js > ./logs/www.log 2> ./logs/error.log"
 	},
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
+		"axios": "^0.21.1",
 		"cors": "^2.8.5",
 		"dateformat": "^4.5.1",
+		"dotenv": "^8.2.0",
 		"express": "^4.17.1",
-		"mongoose": "^5.12.5"
+		"log-timestamp": "^0.3.0",
+		"mongoose": "^5.12.5",
+		"mysql2": "^2.2.5",
+		"sequelize": "^6.6.2",
+		"validator": "^13.6.0"
 	}
 }
