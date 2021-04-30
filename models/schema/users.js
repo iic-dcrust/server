@@ -28,6 +28,9 @@ const Users = sqlDB.define("Users", {
 		type: seq.STRING(256),
 		unique: true,
 	},
+	role: {
+		type: seq.STRING(20),
+	},
 	firstName: {
 		type: seq.STRING(MAX_STRING_LENGTH),
 	},
@@ -36,6 +39,10 @@ const Users = sqlDB.define("Users", {
 	},
 	dob: {
 		type: seq.STRING(10),
+	},
+	salt: {
+		type: seq.STRING(50),
+		allowNull: false,
 	},
 });
 

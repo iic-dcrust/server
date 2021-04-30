@@ -5,6 +5,7 @@ const express = require("express");
 const { sendMsgTo } = require("../utils");
 const app = express();
 const bodyParser = require("body-parser");
+const session = require("express-session");
 
 if (!process.env.APP_ENV) {
 	console.error("Please Provide .env file at root the folder");
@@ -12,6 +13,15 @@ if (!process.env.APP_ENV) {
 }
 
 app.use(cors({ origin: config.clients, credentials: true }));
+//For express sessions
+app.use(
+	session({
+		secret: process.env.SESSION_SECRET,
+		resave: true,
+		saveUninitialized: true,
+		cookie: { httpOnly: true },
+	})
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
