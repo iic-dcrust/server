@@ -4,8 +4,8 @@
 	"description": "server",
 	"main": "bin/www.js",
 	"scripts": {
-		"start": "nodemon ./bin/www.js",
-		"production": "nodemon ./bin/www.js > ./logs/www.log 2> ./logs/error.log"
+		"start": "APP_ENV=dev nodemon ./bin/www.js",
+		"pro": "APP_ENV=pro nodemon ./bin/www.js > ./logs/www.log 2> ./logs/error.log"
 	},
 	"keywords": [],
 	"author": "",
