@@ -12,37 +12,75 @@
 
 - New User Registration :-
 
-          Endpoint :-- [POST] /api/users/register
-          Body :-
-                    {
-                        "firstName": "John",**
-                        "lastName": "Smith",
-                        "dob":"DD-MM-YYYY",
-                        "email":"sample@email.com",**
-                        "username":"tushar123",**
-                        "password":"password",**
-                        "phone":"9897675452",**
-                        "branch":"ece",
-                        "year":"2",
-                        "rollNumber":"18001003054",**
+           Endpoint :-- [POST] /api/users/register
+           Body :-
+                     {
+                         "firstName": "John",**
+                         "lastName": "Smith",
+                         "dob":"DD-MM-YYYY",
+                         "email":"sample@email.com",**
+                         "username":"tushar123",**
+                         "password":"password",**
+                         "phone":"9897675452",**
+                         "branch":"ece",
+                         "year":"2",
+                         "rollNumber":"18001003054",**
 
+                      }
+
+            (** - means required)
+
+            Response :--
+
+             Success :-
+
+                     {
+                         success:" short msg",
+                         email:"sample@email.com",
                      }
 
-           (** - means required)
+             Error :-
+                     {
+                         "error":"error message"
+                     }
 
-           Response :--
+  -Login User :-
 
-            Success :-
+             EndPoint :-- [POST] /api/users/login
+             Body :-
+             {
+                 "username":"usernam", or "email":"email@gmail.com",
+                 "password":"password",
+             }
 
-                    {
-                        success:" short msg",
-                        email:"sample@email.com",
-                    }
+             Response :--
 
-            Error :-
-                    {
-                        "error":"error message"
-                    }
+              Success :-
+
+                 {
+                 "success": "Succefully Loged In",
+                 "firstName": "John"
+                 }
+
+
+             Error :-
+                     {
+                         "error":"error message"
+                     }
+
+- Check if Loged IN :-
+
+            EndPoint :-- [GET] /api/users/isLogedIn
+
+            Response :--
+
+             Success :-
+
+                {
+                 "success": "User Logged In",
+                 "email": "samplsdfde@email.com",
+                 "firstName": "John"
+                }
 
 #### For Events-SVC :-
 
