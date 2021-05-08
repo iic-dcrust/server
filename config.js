@@ -5,7 +5,7 @@ const SQL_DB_DEV_PASSWORD = process.env.SQL_DB_DEV_PASSWORD;
 
 const dev = {
 	mode: "dev",
-	clients: ["localhost:3000"],
+	clients: ["http://localhost:3000"],
 	app: {
 		port: 4433,
 	},
@@ -15,7 +15,7 @@ const dev = {
 		database: "iic_db_dev",
 		username: "iic_db_dev_user",
 		password: SQL_DB_DEV_PASSWORD,
-		logging: false,
+		logging: true,
 	},
 	useMongoDB: true,
 	mongoDBLink: "mongodb://localhost:27017/iic_dcrust",

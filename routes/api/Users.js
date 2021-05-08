@@ -37,7 +37,7 @@ route.post("/login", async (req, res) => {
 	}
 });
 
-route.post("/isLogedIn", async (req, res) => {
+route.get("/isLogedIn", async (req, res) => {
 	try {
 		const checkingToken = req.session.token;
 		const user = await getUserFromToken(checkingToken);

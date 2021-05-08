@@ -13,12 +13,12 @@ const Users = sqlDB.define("Users", {
 	username: {
 		type: seq.STRING(MAX_STRING_LENGTH),
 		allowNull: false,
-		unique: true,
+		unique: "username",
 	},
 	email: {
 		type: seq.STRING(MAX_STRING_LENGTH),
 		allowNull: false,
-		unique: true,
+		unique: "email",
 	},
 	password: {
 		type: seq.STRING(256),
@@ -26,10 +26,20 @@ const Users = sqlDB.define("Users", {
 	},
 	token: {
 		type: seq.STRING(256),
-		unique: true,
+		unique: "token",
 	},
 	role: {
 		type: seq.STRING(20),
+	},
+	year: { type: seq.STRING(1) },
+	rollNumber: {
+		type: seq.STRING(12),
+	},
+	branch: {
+		type: seq.STRING(20),
+	},
+	phone: {
+		type: seq.STRING(14),
 	},
 	firstName: {
 		type: seq.STRING(MAX_STRING_LENGTH),

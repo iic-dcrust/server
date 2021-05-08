@@ -6,14 +6,22 @@ const validator = require("validator");
 
 async function registerUser(postData) {
 	//Req Validation
-	if (!postData.username || !postData.email || !postData.password) {
-		throw new Error("Must Required :- Username , Email , Password");
+	if (
+		!postData.username ||
+		!postData.email ||
+		!postData.password ||
+		!postData.phone
+	) {
+		throw new Error("Must Required :- Username , Email , Password , Phone");
 	}
 	if (!validator.isEmail(postData.email)) {
 		throw new Error("Please Provide a Valid Email Address");
 	}
 	if (!validator.isAlphanumeric(postData.username)) {
 		throw new Error("Username Should be Alphanumeric");
+	}
+	if (!validator.isMobilePhone(postData.phone)) {
+		throw new Error("Phone number is not valid");
 	}
 	// End Validator
 

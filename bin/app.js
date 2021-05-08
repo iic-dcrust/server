@@ -12,7 +12,7 @@ if (!process.env.APP_ENV) {
 	process.exit();
 }
 
-app.use(cors({ origin: config.clients, credentials: true }));
+app.use(cors({ origin: config.clients, credentials: false }));
 //For express sessions
 app.use(
 	session({
@@ -24,6 +24,11 @@ app.use(
 );
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Code simulate low network connection speed
+//app.use((req, res, next) => {
+//setTimeout(() => next(), 2000);
+//});
 
 // test if server run fine..
 app.use("/", (req, res, next) => {
