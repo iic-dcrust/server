@@ -27,7 +27,7 @@ const dev = {
 };
 const pro = {
   mode: "pro",
-  clients: ["dev-iic.thinkbots.club", "iic.thinkbots.club"],
+  clients: ["dev-iic.thinkbots.club", "iic.thinkbots.club", "http://localhost:3000"],
   app: {
     port: 4133,
   },
