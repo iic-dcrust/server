@@ -19,7 +19,6 @@
                          "lastName": "Smith",
                          "dob":"DD-MM-YYYY",
                          "email":"sample@email.com",**
-                         "username":"tushar123",**
                          "password":"password",**
                          "phone":"9897675452",**
                          "branch":"ece",

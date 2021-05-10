@@ -7,11 +7,16 @@ async function CreateNewUser(data) {
 	const token = randomStringGenrator(150);
 	const salt = randomStringGenrator(50);
 
-	if (await isUsernameRegistered(data.username)) {
-		throw new Error("Username Already Registered");
-	}
 	if (await isEmailRegistered(data.email)) {
-		throw new Error("Email Already Registered");
+		let error = new Error("Email Already Registered");
+		error.http_code = 400;
+		throw error;
+	}
+
+	if (await isUsernameRegistered(data.username)) {
+		let error = new Error("Username Already Registered");
+		error.http_code = 400;
+		throw error;
 	}
 
 	const hashedPassword = crypto
@@ -21,6 +26,7 @@ async function CreateNewUser(data) {
 
 	data.role = "student";
 
+	console.log(data);
 	const newUser = await Users.create({ ...data, token, salt });
 	console.log(`New User Created with ID :- ${newUser.id}`);
 	return newUser;
@@ -64,9 +70,10 @@ async function authAndGetLoginToken({ username, email, password }) {
 			[Op.or]: [{ username: username }, { email: email }],
 		},
 	});
-	console.log(user);
 	if (!user) {
-		throw new Error("User not found");
+		let error = new Error("User not found");
+		error.http_code = 400;
+		throw error;
 	}
 
 	const hashedPassword = crypto
@@ -76,7 +83,9 @@ async function authAndGetLoginToken({ username, email, password }) {
 	if (hashedPassword === user.password) {
 		return user;
 	} else {
-		throw new Error("Password is Incorrect");
+		let error = new Error("Password is Incorrect");
+		error.http_code = 400;
+		throw error;
 	}
 }
 
@@ -89,7 +98,9 @@ async function getUserFromToken(token) {
 	});
 
 	if (!user) {
-		throw new Error("Invalid Token");
+		let error = new Error("Invalid Token");
+		error.http_code = 400;
+		throw error;
 	}
 
 	return user;

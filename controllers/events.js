@@ -1,4 +1,8 @@
-const { getEventsSvc, getEventByIdSvc } = require("../services/events-svc");
+const {
+	getEventsSvc,
+	getEventByIdSvc,
+	createEventSvc,
+} = require("../services/events-svc");
 
 async function getEvents(req, res) {
 	try {
@@ -24,4 +28,19 @@ async function getEventById(req, res) {
 	}
 }
 
-module.exports = { getEvents, getEventById };
+async function createEvent(req, res) {
+	try {
+		let data = req.body;
+		const event = await createEventSvc(data);
+		if (!event) {
+			throw new Error("Unexpected Error");
+		}
+
+		res.status(200).send({ success: "Event Created", eventId: event });
+	} catch (err) {
+		console.error(err);
+		res.status(500).send({ error: err.message });
+	}
+}
+
+module.exports = { getEvents, getEventById, createEvent };

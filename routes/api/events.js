@@ -1,8 +1,14 @@
 const route = require("express").Router();
-const { getEvents, getEventById } = require("../../controllers/events");
+const {
+	getEvents,
+	getEventById,
+	createEvent,
+} = require("../../controllers/events");
+const { admin, auth } = require("../../middlewares");
 
 //Routes
 
+route.post("/create", auth, admin, createEvent);
 route.get("/", getEvents);
 route.get("/:id", getEventById);
 

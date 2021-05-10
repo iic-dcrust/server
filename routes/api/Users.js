@@ -1,56 +1,13 @@
 const route = require("express").Router();
 const { registerUser, loginUser } = require("../../controllers/users");
-const { getUserFromToken } = require("../../services/users-svc");
+const { auth } = require("../../middlewares");
 
-route.post("/register", async (req, res) => {
-	try {
-		const postData = req.body;
-		const response = await registerUser(postData);
-		res.status(200).send(response);
-	} catch (err) {
-		console.error(err);
-		res.status(500).send({ error: err.message });
-	}
-});
+route.post("/register", registerUser);
 
-route.post("/login", async (req, res) => {
-	try {
-		const postData = req.body;
-		const user = await loginUser(postData);
+route.post("/login", loginUser);
 
-		if (!user) {
-			throw new Error("Internal Error");
-		}
-
-		req.session.token = user.token;
-		req.session.save();
-
-		const response = {
-			success: "Succefully Loged In",
-			firstName: user.firstName,
-		};
-
-		res.status(200).send(response);
-	} catch (err) {
-		console.error(err);
-		res.status(500).send({ error: err.message });
-	}
-});
-
-route.get("/isLogedIn", async (req, res) => {
-	try {
-		const checkingToken = req.session.token;
-		const user = await getUserFromToken(checkingToken);
-		const response = {
-			success: "User Logged In",
-			email: user.email,
-			firstName: user.firstName,
-		};
-		res.status(200).send(response);
-	} catch (err) {
-		console.log(err);
-		res.status(500).send({ error: err.message });
-	}
+route.get("/isLogedIn", auth, (req, res) => {
+	res.send(true);
 });
 
 module.exports = { route };

@@ -29,6 +29,17 @@ const Events = sqlDB.define("Events", {
 	mainImgUrl: {
 		type: seq.STRING(200),
 	},
+	registeredUsersId: {
+		type: seq.TEXT,
+		get() {
+			return this.getDataValue("registeredUsersId").split(";");
+		},
+		set(val) {
+			this.setDataValue("registeredUsersId", val.join(";"));
+		},
+
+		defaultValue: " ",
+	},
 });
 
 module.exports = { Events };

@@ -1,4 +1,4 @@
-const { Events } = require("../models/schema/events");
+const { Events, Users } = require("../models/schema");
 const { Op } = require("sequelize");
 const { UTCtoIST } = require("../utils");
 
@@ -43,4 +43,36 @@ async function getEventByIdSvc(id) {
 	return event;
 }
 
-module.exports = { getEventsSvc, getEventByIdSvc };
+async function createEventSvc(data) {
+	console.log(data);
+	let event = await Events.create({ ...data });
+	if (event) {
+		return event.id;
+	} else {
+		throw new Error("Unexpected Error");
+	}
+}
+
+async function registerUserForEventSvc(userId, eventId) {
+	let event = await Events.findOne({
+		where: {
+			id: eventId,
+		},
+	});
+
+	if (!event) {
+		throw new Error("Event Not Found");
+	}
+
+	event.registeredUsersId.push(userId);
+	event.save();
+
+	return { success: "Registered" };
+}
+
+module.exports = {
+	getEventsSvc,
+	getEventByIdSvc,
+	createEventSvc,
+	registerUserForEventSvc,
+};

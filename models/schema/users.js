@@ -54,6 +54,17 @@ const Users = sqlDB.define("Users", {
 		type: seq.STRING(50),
 		allowNull: false,
 	},
+	registeredEvents: {
+		type: seq.TEXT,
+		get() {
+			return this.getDataValue("registeredEvents").split(";");
+		},
+		set(val) {
+			this.setDataValue("registeredEvents", val.join(";"));
+		},
+
+		defaultValue: " ",
+	},
 });
 
 module.exports = { Users };
