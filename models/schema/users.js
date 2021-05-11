@@ -22,7 +22,6 @@ const Users = sqlDB.define("Users", {
 	},
 	password: {
 		type: seq.STRING(256),
-		allowNull: false,
 	},
 	token: {
 		type: seq.STRING(256),
@@ -52,7 +51,9 @@ const Users = sqlDB.define("Users", {
 	},
 	salt: {
 		type: seq.STRING(50),
-		allowNull: false,
+	},
+	profilePic: {
+		type: seq.TEXT,
 	},
 	registeredEvents: {
 		type: seq.TEXT,

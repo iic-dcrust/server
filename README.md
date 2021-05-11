@@ -81,6 +81,27 @@
                  "firstName": "John"
                 }
 
+- Google Login :-
+
+            EndPoint :-- [POST] /api/users/google
+
+            Body:-- {
+                idToken:"asdfasdfdsfds....."
+            }
+
+            Response :--
+            Success :-
+
+                {
+                 "success": "User Logged In",
+                 "email": "samplsdfde@email.com",
+                 "firstName": "John"
+                }
+
+                 Error :-
+                     {
+                         "error":"error message"
+
 #### For Events-SVC :-
 
     Get Events :-

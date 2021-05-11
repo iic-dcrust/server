@@ -26,10 +26,36 @@ async function CreateNewUser(data) {
 
 	data.role = "student";
 
-	console.log(data);
 	const newUser = await Users.create({ ...data, token, salt });
 	console.log(`New User Created with ID :- ${newUser.id}`);
 	return newUser;
+}
+
+async function continueWithGoogleSvc(data) {
+	const isRegistered = await Users.findOne({
+		attributes: ["id", "token", "email", "firstName", "profilePic"],
+		where: { email: data.email },
+	});
+	console.log(isRegistered);
+
+	if (!isRegistered) {
+		const tokenNew = randomStringGenrator(150);
+		data.role = "student";
+		const { id, token, email, firstName, profilePic } = await Users.create({
+			...data,
+			token: tokenNew,
+		});
+		const user = {
+			token,
+			id,
+			email,
+			firstName,
+			profilePic,
+		};
+		return user;
+	} else {
+		return isRegistered;
+	}
 }
 
 async function isUsernameRegistered(username) {
@@ -112,4 +138,5 @@ module.exports = {
 	isEmailRegistered,
 	authAndGetLoginToken,
 	getUserFromToken,
+	continueWithGoogleSvc,
 };

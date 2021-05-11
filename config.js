@@ -4,6 +4,7 @@ const ENV = process.env.APP_ENV; // 'pro' || 'dev' || 'test'
 const SQL_DB_DEV_PASSWORD = process.env.SQL_DB_DEV_PASSWORD;
 const SQL_DB_PRO_PASSWORD = process.env.SQL_DB_PRO_PASSWORD;
 const SQL_HOST = process.env.SQL_HOST;
+const GOOGLE_CLIENT_TOKEN = process.env.GOOGLE_CLIENT_TOKEN;
 
 const dev = {
 	mode: "dev",
@@ -24,12 +25,13 @@ const dev = {
 	timeZone: "Asia/Calcutta",
 	logReqBody: true,
 	logReqParams: true,
+	googleClientToken: GOOGLE_CLIENT_TOKEN,
 };
 const pro = {
 	mode: "pro",
 	clients: [
-"https://dev-iic.thinkbots.club",
-"https://iic.thinkbots.club",
+		"https://dev-iic.thinkbots.club",
+		"https://iic.thinkbots.club",
 		"http://localhost:3000",
 	],
 	app: {
@@ -48,6 +50,7 @@ const pro = {
 	timeZone: "Asia/Calcutta",
 	logReqBody: false,
 	logReqParams: false,
+	googleClientToken: GOOGLE_CLIENT_TOKEN,
 };
 
 const config = {
