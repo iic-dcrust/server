@@ -3,6 +3,7 @@ const {
 	getEvents,
 	getEventById,
 	createEvent,
+	registerEvent,
 } = require("../../controllers/events");
 const { admin, auth } = require("../../middlewares");
 
@@ -11,6 +12,7 @@ const { admin, auth } = require("../../middlewares");
 route.post("/create", auth, admin, createEvent);
 route.get("/", getEvents);
 route.get("/:id", getEventById);
+route.post("/register/:id", auth, registerEvent);
 
 // route.get("/", async (req, res) => {
 // 	try {

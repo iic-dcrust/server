@@ -117,7 +117,7 @@ async function authAndGetLoginToken({ username, email, password }) {
 
 async function getUserFromToken(token) {
 	const user = await Users.findOne({
-		attributes: ["email", "username", "firstName"],
+		attributes: ["email", "username", "firstName", "id"],
 		where: {
 			token: token,
 		},

@@ -17,9 +17,9 @@ app.use(cors({ origin: config.clients, credentials: false }));
 app.use(
 	session({
 		secret: process.env.SESSION_SECRET,
-		resave: true,
+		resave: false,
 		saveUninitialized: true,
-		cookie: { httpOnly: true },
+		cookie: { httpOnly: false },
 	})
 );
 app.use(express.json());

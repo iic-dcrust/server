@@ -12,8 +12,8 @@ route.post("/login", loginUser);
 
 route.post("/google", continueWithGoogle);
 
-route.get("/isLogedIn", auth, (req, res) => {
-	res.send(true);
+route.get("/data", auth, (req, res) => {
+	res.send(req.user);
 });
 
 module.exports = { route };

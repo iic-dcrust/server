@@ -46,6 +46,7 @@ async function registerUser(req, res) {
 		const response = {
 			success: "Succefully Registered",
 			email: newUser.email,
+			token: newUser.token,
 		};
 		res.status(200).send(response);
 	} catch (err) {
@@ -71,13 +72,10 @@ async function loginUser(req, res) {
 		// End Validator
 
 		const loginToken = await authAndGetLoginToken(postData);
-
-		req.session.token = loginToken.token;
-		req.session.save();
-
 		const response = {
 			success: "Succefully Loged In",
 			firstName: loginToken.firstName,
+			token: loginToken.token,
 		};
 
 		res.status(200).send(response);
@@ -102,6 +100,7 @@ async function continueWithGoogle(req, res) {
 			success: "User Logged In",
 			email: user.email,
 			firstName: user.firstName,
+			token: user.token,
 		};
 		res.status(200).send(response);
 	} catch (err) {

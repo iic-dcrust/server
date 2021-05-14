@@ -40,6 +40,15 @@ const Events = sqlDB.define("Events", {
 
 		defaultValue: " ",
 	},
+	attachedFiles: {
+		type: seq.TEXT,
+	},
+	schedule: {
+		type: seq.TEXT,
+	},
+	joinLink: {
+		type: seq.TEXT,
+	},
 });
 
 module.exports = { Events };

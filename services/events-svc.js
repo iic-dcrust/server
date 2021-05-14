@@ -44,7 +44,6 @@ async function getEventByIdSvc(id) {
 }
 
 async function createEventSvc(data) {
-	console.log(data);
 	let event = await Events.create({ ...data });
 	if (event) {
 		return event.id;
@@ -55,6 +54,7 @@ async function createEventSvc(data) {
 
 async function registerUserForEventSvc(userId, eventId) {
 	let event = await Events.findOne({
+		attributes: ["registeredUsersId", "id"],
 		where: {
 			id: eventId,
 		},
@@ -64,10 +64,14 @@ async function registerUserForEventSvc(userId, eventId) {
 		throw new Error("Event Not Found");
 	}
 
-	event.registeredUsersId.push(userId);
+	let temp = event.registeredUsersId;
+	if (temp.includes(JSON.stringify(userId))) {
+		return true;
+	}
+	temp.push(JSON.stringify(userId));
+	event.registeredUsersId = temp;
 	event.save();
-
-	return { success: "Registered" };
+	return true;
 }
 
 module.exports = {
