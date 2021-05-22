@@ -30,8 +30,8 @@ const dev = {
 const pro = {
 	mode: "pro",
 	clients: [
-		"https://dev-iic.thinkbots.club",
-		"https://iic.thinkbots.club",
+		"https://dev.iicdcrustm.com",
+		"https://iicdcrustm.com",
 		"http://localhost:3000",
 	],
 	app: {
