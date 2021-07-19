@@ -5,7 +5,8 @@
 	"main": "bin/www.js",
 	"scripts": {
 		"start": "APP_ENV=dev nodemon ./bin/www.js",
-		"pro": "APP_ENV=pro nodemon ./bin/www.js > ./logs/www.log 2> ./logs/error.log"
+		"pro": "APP_ENV=pro node ./bin/www.js > ./logs/www.log 2> ./logs/error.log",
+		"dev": "APP_ENV=dev nodemon ./bin/www.js "
 	},
 	"keywords": [],
 	"author": "",
@@ -19,9 +20,13 @@
 		"express-session": "^1.17.1",
 		"google-auth-library": "^7.0.4",
 		"log-timestamp": "^0.3.0",
+		"mariadb": "^2.5.4",
 		"mongoose": "^5.12.5",
 		"mysql2": "^2.2.5",
 		"sequelize": "^6.6.2",
 		"validator": "^13.6.0"
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.12"
 	}
 }
