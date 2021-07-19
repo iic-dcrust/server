@@ -12,7 +12,19 @@ if (!process.env.APP_ENV) {
 	process.exit();
 }
 
-app.use(cors({ origin: config.clients, credentials: false }));
+var corsOptions = {
+  origin: function (origin, callback) {
+    if (config.clients.indexOf(origin) !== -1 || !origin) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  },
+  credentials:false
+}
+
+
+app.use(cors(corsOptions));
 //For express sessions
 app.use(
 	session({
