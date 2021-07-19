@@ -185,3 +185,22 @@
         {
             error:"Error msg"
         }
+
+
+
+    Create Events (Only For Admin) :-
+
+        Endpoint :-- [POST] /api/events/create
+        body :-
+          {
+            "title": "Title ",
+            "description": "descriptis sdfadsf dfds sadf ads fasdfads fdsaf dsfadsf adsf adsf adsf adsf adsf adsf adsf adsf adsf adsf ads fasdf adsf adsf adsf adsf asdf adsf adsf adsfadsf ads fadsfadsfadsf dsff",
+            "startTime": "2021-04-30T18:06:48.000Z",
+            "endTime": "2021-05-07T12:10:10.000Z",
+            "venue": "venue",
+            "type": "workshop",
+            "mainImgUrl":"https://pub.iicdcrustm.com/images/tushar.JPG",
+            "schedule":"text;shortText;description",
+            "attachedFiles":"title;https://pub.iicdcrustm.com/images/tushar.JPG",
+            "joinLink":"https://pub.iicdcrustm.com/images/tushar.JPG"
+        }

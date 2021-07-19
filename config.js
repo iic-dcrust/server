@@ -8,7 +8,7 @@ const GOOGLE_CLIENT_TOKEN = process.env.GOOGLE_CLIENT_TOKEN;
 
 const dev = {
 	mode: "dev",
-	clients: ["http://localhost:3000", "http://macbook.local:3000"],
+	clients: ["http://localhost:3000", "http://macbook.local:3000",],
 	app: {
 		port: 4433,
 	},
@@ -30,9 +30,12 @@ const dev = {
 const pro = {
 	mode: "pro",
 	clients: [
+		"http://localhost/",
+		"http://localhost:3000",
+		"http://macbook.local:3000",
+		"http://macbook.local",
 		"https://dev.iicdcrustm.com",
 		"https://iicdcrustm.com",
-		"http://localhost:3000",
 	],
 	app: {
 		port: 4133,
@@ -41,7 +44,7 @@ const pro = {
 		host: SQL_HOST,
 		dialect: "mysql",
 		database: "iic_db_pro",
-		username: "iic_db_pro_user",
+		username: "root",
 		password: SQL_DB_PASSWORD,
 		logging: false,
 	},

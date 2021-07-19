@@ -5,7 +5,7 @@
 	"main": "bin/www.js",
 	"scripts": {
 		"start": "APP_ENV=dev nodemon ./bin/www.js",
-		"pro": "APP_ENV=pro node ./bin/www.js > ./logs/www.log 2> ./logs/error.log",
+		"pro": "APP_ENV=pro node ./bin/www.js > /server-logs/www.log 2> /server-logs/error.log",
 		"dev": "APP_ENV=dev nodemon ./bin/www.js "
 	},
 	"keywords": [],
