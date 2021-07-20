@@ -36,7 +36,7 @@ async function getEventById(req, res) {
 		}
 		let eventRegistered = false;
 		if (user) {
-			eventRegistered = event.registeredUsersId.includes(
+			eventRegistered = event?.registeredUsersId.includes(
 				JSON.stringify(user.id)
 			);
 		}
