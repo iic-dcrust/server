@@ -42,6 +42,16 @@ async function getEventByIdSvc(id) {
 	});
 	return event;
 }
+async function deleteEventSvc(id) {
+	let event = await Events.findOne({
+		where: {
+			id: id,
+		},
+	});
+	event.destroy();
+	event.save()
+	return event;
+}
 
 async function createEventSvc(data) {
 	let event = await Events.create({ ...data });
@@ -79,4 +89,5 @@ module.exports = {
 	getEventByIdSvc,
 	createEventSvc,
 	registerUserForEventSvc,
+	deleteEventSvc
 };

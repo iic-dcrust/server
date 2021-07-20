@@ -4,12 +4,14 @@ const {
 	getEventById,
 	createEvent,
 	registerEvent,
+	deleteEvent
 } = require("../../controllers/events");
 const { admin, auth } = require("../../middlewares");
 
 //Routes
 
 route.post("/create", auth, admin, createEvent);
+route.delete("/:id", auth, admin, deleteEvent);
 route.get("/", getEvents);
 route.get("/:id", getEventById);
 route.post("/register/:id", auth, registerEvent);

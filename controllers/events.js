@@ -3,6 +3,7 @@ const {
 	getEventByIdSvc,
 	createEventSvc,
 	registerUserForEventSvc,
+	deleteEventSvc,
 } = require("../services/events-svc");
 const { getUserFromToken } = require("../services/users-svc");
 
@@ -85,6 +86,25 @@ async function createEvent(req, res) {
 	}
 }
 
+async function deleteEvent(req, res) {
+	try {
+		let id = req.params.id;
+		const event = await deleteEventSvc(id);
+		if (!event) {
+			throw new Error("Unexpected Error");
+		}
+
+		res.status(200).send({ success: "Event Deleted", eventId: event.id });
+	} catch (err) {
+		console.error(err);
+		if (err.http_code === 400) {
+			res.status(400).send({ error: err.message });
+		} else {
+			res.status(500).send({ error: "Internal Error" });
+		}
+	}
+}
+
 async function registerEvent(req, res) {
 	try {
 		let userId = req.user.id;
@@ -104,4 +124,4 @@ async function registerEvent(req, res) {
 	}
 }
 
-module.exports = { getEvents, getEventById, createEvent, registerEvent };
+module.exports = { getEvents, getEventById, createEvent, registerEvent , deleteEvent};
