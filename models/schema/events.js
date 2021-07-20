@@ -31,6 +31,7 @@ const Events = sqlDB.define("Events", {
 	},
 	registeredUsersId: {
 		type: seq.TEXT,
+		defaultValue: " ",
 		get() {
 			return this.getDataValue("registeredUsersId").split(";");
 		},
@@ -38,7 +39,7 @@ const Events = sqlDB.define("Events", {
 			this.setDataValue("registeredUsersId", val.join(";"));
 		},
 
-		defaultValue: " ",
+		
 	},
 	attachedFiles: {
 		type: seq.TEXT,

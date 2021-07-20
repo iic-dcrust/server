@@ -1,5 +1,5 @@
 const route = require("express").Router();
-const Users = require("./users").route;
+const Users = require("./Users").route;
 const Events = require("./events").route;
 
 route.use("/users", Users);
