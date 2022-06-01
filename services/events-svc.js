@@ -2,7 +2,7 @@ const { Events, Users } = require("../models/schema");
 const { Op } = require("sequelize");
 const { UTCtoIST } = require("../utils");
 
-const onPageLimit = 10;
+const onPageLimit = 6;
 
 async function getEventsSvc(pageNumber = 0, type = "all", time = "all") {
   let TodayDate = new Date();
