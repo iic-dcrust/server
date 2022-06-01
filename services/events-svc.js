@@ -19,7 +19,7 @@ async function getEventsSvc(pageNumber = 0, type = "all", time = "all") {
       "type",
       "mainImgUrl",
     ],
-    order: ["startTime", "DESC"],
+    order: [["startTime", "DESC"]],
     where: {
       type:
         type === "all" ? { [Op.or]: ["hack", "webinar", "workshop"] } : type,
