@@ -1,6 +1,0 @@
-SQL_DB_DEV_PASSWORD=
-SQL_DB_PRO_PASSWORD=''
-telegramBotToken="jlllll"
-errorNotificationchatIdTelegram=""
-SESSION_SECRET="j"
-SQL_HOST="localhost"
