@@ -36,6 +36,7 @@ const pro = {
 		"http://macbook.local",
 		"https://dev.iicdcrustm.com",
 		"https://iicdcrustm.com",
+		"http://iicdcrustm.com",
 	],
 	app: {
 		port: 4133,
