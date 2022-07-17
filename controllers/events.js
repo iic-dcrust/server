@@ -11,7 +11,7 @@ async function getEvents(req, res) {
 	try {
 		let { type, page, time } = req.query;
 		page = page && parseInt(page - 1);
-		await setTimeout(() => {}, 2000);
+		// await setTimeout(() => {}, 2000);
 		let events = await getEventsSvc(page, type, time);
 		res.status(200).send(events);
 	} catch (err) {
