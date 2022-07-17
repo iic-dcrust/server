@@ -1,4 +1,4 @@
-let adminEmailList = ["iamtushar324@gmail.com"];
+let adminEmailList = ["admin@iicdcrustm.com"];
 
 async function admin(req, res, next) {
 	let found = false;

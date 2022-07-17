@@ -29,6 +29,7 @@ const Users = sqlDB.define("Users", {
 	},
 	role: {
 		type: seq.STRING(20),
+		defaultValue: "student", // student || admin
 	},
 	year: { type: seq.STRING(1) },
 	rollNumber: {

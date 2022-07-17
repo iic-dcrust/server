@@ -7,6 +7,7 @@ const path = require("path");
 const { config } = require("../config");
 const { sqlDB } = require("../handlers/sqlDB");
 const { sendMsgTo } = require("../utils");
+const { seeding } = require("./seeds");
 
 if (config.mode === "pro") require("log-timestamp");
 
@@ -41,7 +42,8 @@ console.log(
 
 sqlDB
 	.sync({ alter: true })
-	.then(() => {
+	.then(async () => {
+		await seeding();
 		server.listen(port);
 		server.on("listening", onListening);
 	})
