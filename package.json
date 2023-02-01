@@ -21,7 +21,7 @@
 		"google-auth-library": "^7.0.4",
 		"log-timestamp": "^0.3.0",
 		"mariadb": "^2.5.4",
-		"mongoose": "^5.12.5",
+		"mongoose": "^5.13.15",
 		"mysql2": "^2.2.5",
 		"sequelize": "^6.6.2",
 		"validator": "^13.7.0"
